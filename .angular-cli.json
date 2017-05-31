@@ -30,7 +30,9 @@
         "../node_modules/wfs-theme/css/WFS-ng2bootstrap.css",
         "../node_modules/wfs-theme/css/WFS-bootstrap.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/primeui/primeui-ng-all.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

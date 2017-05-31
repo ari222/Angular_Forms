@@ -1,0 +1,216 @@
+<div class="row">
+  <div class="panel panel-default form-panel col-md-6">
+    <div class="panel-body">
+      <div class="form-container" *ngIf="!submitted">
+        <h2>Infrastructure Engineering Request Form </h2>
+        <hr>
+        <form [formGroup]="Form" novalidate (ngSubmit)="save(Form.value, Form.valid)">
+          <div class="row">
+            <h3>General Information </h3>
+          </div>
+          <div class="row form-row" formGroupName="generalInfo">
+            <div class="col-sm-3">
+              <label for="">Project Name <span>*</span></label>
+            </div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <input type="text" formControlName="projectName" class="form-control" pInputText placeholder="Project name">
+            </div>
+          </div>
+          <div class="row form-row" formGroupName="generalInfo">
+            <div class="col-sm-3">
+              <label for="">Application/Repository Name (As in bitBucket, If Applicable)</label>
+            </div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <input type="text" formControlName="repoName" class="form-control" pInputText placeholder="Application/Repository name">
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <h3>Instances</h3>
+          </div>
+          <div class="row form-row" formGroupName="instances">
+            <div class="col-sm-3">
+              <label for="">Application Type </label>
+            </div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <p-dropdown [options]="appTypes" formControlName="applicationType" placeholder="Select Application Type "></p-dropdown>
+            </div>
+          </div>
+          <div class="row form-row" formGroupName="instances">
+            <div class="col-sm-3"><label for="">If other application type, specify </label></div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <input type="text" class="form-control" formControlName="otherType" pInputText placeholder="Other applications..">
+            </div>
+          </div>
+          <div class="row form-row" formGroupName="instances">
+            <div class="col-sm-3">
+              <label for="">Desired Application Name </label>
+            </div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <input type="text" class="form-control" formControlName="desiredApplicationName" pInputText placeholder="Desired Application Name">
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <h3>Instances Information </h3>
+          </div>
+          <div class="row form-row" formGroupName="instanceInfo">
+            <div class="col-sm-3">
+              <label for="">Database </label>
+            </div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <p-dropdown [options]="dbAvailable" formControlName="database" placeholder="Select a Database"></p-dropdown>
+            </div>
+          </div>
+          <div class="row form-row" formGroupName="instanceInfo">
+            <div class="col-sm-3"><label for="">If other Database, specify </label></div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <input type="text" class="form-control" formControlName="otherDb" pInputText placeholder="Other Database.."></div>
+          </div>
+          <div class="row form-row" formGroupName="instanceInfo">
+            <div class="col-sm-3">
+              <label for="">PROD Database Storage Capacity (0-6 Months) </label>
+            </div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <input type="text" class="form-control" formControlName="dbCapacity6moth" pInputText placeholder="PROD Database Storage Capacity (0-6 Months)">
+            </div>
+          </div>
+          <div class="row form-row" formGroupName="instanceInfo">
+            <div class="col-sm-3"><label for="">PROD Database Storage Capacity (0-1 Year) </label></div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <input type="text" class="form-control" formControlName="dbCapacity1year" pInputText placeholder="PROD Database Storage Capacity (0-1 Year)"></div>
+          </div>
+          <hr>
+          <div class="row">
+            <h3>Security Review (if Outside Vendor)</h3>
+          </div>
+          <div class="row form-row" formGroupName="securityReview">
+            <div class="col-sm-3">
+              <label for="">Scheduled Date </label>
+            </div>
+            <div class="col-sm-5 col-sm-offset-1">
+              <p-calendar formControlName="scheduleAt" [showIcon]="true"></p-calendar>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <h3>Vendor's Information </h3>
+          </div>
+          <div class="row form-row">
+            <div class="col-sm-3">
+              <label for="">Is the application Purchased from a vendor </label>
+            </div>
+         <!--   <div class="col-sm-8 col-sm-offset-1" formGroupName="vendorInfo">
+              <p-dropdown [options]="accebitlity" formControlName="isPurchaseFromVendor" placeholder="Select"></p-dropdown>
+            </div>-->
+            <div class="col-sm-8 col-sm-offset-1" formGroupName="vendorInfo">
+              <p-radioButton name="group2" value="Yes" formControlName="isPurchaseFromVendor" label="Yes"></p-radioButton>
+              <p-radioButton name="group2" value="No" formControlName="isPurchaseFromVendor" label="No"></p-radioButton>
+            </div>
+          </div>
+          <div class="row form-row" formGroupName="vendorInfo">
+            <div class="col-sm-3"><label for="">Accesibility </label></div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <p-dropdown [options]="accebitlity" formControlName="accesiblity" placeholder="Select accebitlity Type "></p-dropdown>
+            </div>
+          </div>
+          <div class="row form-row" formGroupName="vendorInfo">
+            <div class="col-sm-3"><label for="">Vendor's Name </label></div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <input type="text" class="form-control" formControlName="vendorName" pInputText placeholder="Vendor's Name">
+            </div>
+          </div>
+          <div class="row form-row" formGroupName="vendorInfo">
+            <div class="col-sm-3"><label for="">Vendor's Phone Number </label></div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <p-inputMask mask="9999999999" formControlName="vendorContact" placeholder="999999999"></p-inputMask>
+            </div>
+          </div>
+          <div class="row form-row" formGroupName="vendorInfo">
+            <div class="col-sm-12">
+              <div class="col-sm-3"><label for="" >Vendor's Address </label></div>
+              <div class="col-sm-8 col-sm-offset-1">
+                <textarea class="col-xs-12" rows="5" formControlName="vendorAddress" pInputTextArea placeholder="Vendor's Address "></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row form-row" formGroupName="vendorInfo">
+            <div class="col-sm-3"><label for="">WFS Product owner (In-House Contact Person) </label></div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <input type="text" class="form-control" formControlName="productOwner" pInputText placeholder="Contact person name">
+            </div>
+          </div>
+          <div class="row form-row" formGroupName="vendorInfo">
+            <div class="col-sm-12">
+              <div class="col-sm-3"><label for="" >Application Description </label></div>
+              <div class="col-sm-8 col-sm-offset-1">
+                <textarea class="col-xs-12" rows="5" formControlName="description" pInputTextArea placeholder="Description"></textarea>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <h3>Requestor's Info</h3>
+          </div>
+          <br>
+          <div class="row form-row" formGroupName="requrestorInfo">
+            <div class="col-sm-3"><label for="">Requested By </label></div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <input type="text" class="form-control" formControlName="requestorName" pInputText placeholder="Employee's name">
+            </div>
+          </div>
+          <div class="row form-row" formGroupName="requrestorInfo">
+            <div class="col-sm-3"><label for="">Department </label></div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <input type="text" class="form-control" formControlName="deptName" pInputText placeholder="Department name">
+            </div>
+          </div>
+          <div class="row form-row" formGroupName="requrestorInfo">
+            <div class="col-sm-3"><label for="">Department Manager's Name </label></div>
+            <div class="col-sm-8 col-sm-offset-1">
+              <input type="text" class="form-control" formControlName="deptManager" pInputText placeholder="Department Manager's Name"></div>
+          </div>
+          <div class="row form-row" formGroupName="requrestorInfo">
+            <div class="col-sm-12">
+              <div class="col-sm-3"><label for="" >Application Description </label></div>
+              <div class="col-sm-8 col-sm-offset-1">
+                <textarea class="col-xs-12" rows="5" formControlName="description" pInputTextArea placeholder="Description"></textarea>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <h3>Extra Information</h3>
+          </div>
+          <br>
+          <div class="row form-row" formGroupName="extraInfo">
+            <div class="col-sm-12">
+              <div class="col-sm-3"><label for="" >Information </label></div>
+              <div class="col-sm-8 col-sm-offset-1">
+                <textarea  class="col-xs-12" rows="5" formControlName="description" pInputTextArea placeholder="Extra Information "></textarea>
+              </div>
+            </div>
+            <br>
+          </div>
+          <br>
+          <hr>
+          <div class="button-gen-wrapper">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+              <div class="col-md-6 button-container">
+                <button type="submit" pButton category="primary" type="text" label="Submit" [disabled]="!Form.valid"></button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="alert alert-success" *ngIf="submitted">
+          <strong>Success !</strong> form has submitted successfully.
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row" #buttonWrapper>
+
+</div>
