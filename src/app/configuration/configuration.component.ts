@@ -3,10 +3,10 @@ import { ButtonModule, InputMaskModule, InputTextModule,CalendarModule, RadioBut
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  templateUrl: './configuration.component.html',
+  styleUrls: ['./configuration.component.css']
 })
-export class FormComponent implements OnInit {
+export class ConfigurationComponent implements OnInit {
 
   value : Date;
   radioButtonVal : string = 'Yes';
