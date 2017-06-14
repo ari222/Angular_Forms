@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { TestComponent } from './test/';
-import { Test2Component } from './test2/';
-import {AboutComponent} from './about/';
+import { ConfigurationComponent } from './configuration/';
 import { ConfigurationResolveService } from './configuration-resolve.service';
 
 const routes: Routes = [
@@ -13,9 +10,10 @@ const routes: Routes = [
     pathMatch: 'prefix',
     children: [
       { path: '',redirectTo:'test1',pathMatch:'full'},
-      { path: 'test1', component: TestComponent },
-      { path: 'test2', component: Test2Component },
-      { path:'about',component:AboutComponent}
+     // { path: 'test1', component: TestComponent },
+     // { path: 'test2', component: Test2Component },
+    //  { path:'about', component:AboutComponent},
+      { path:'configuration', component:ConfigurationComponent}
     ]
   }
    // {path:'',redirectTo:'test1',resolve:[ConfigurationResolveService],pathMatch:'prefix'},
