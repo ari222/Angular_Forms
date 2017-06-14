@@ -9,16 +9,10 @@ const routes: Routes = [
     resolve:[ConfigurationResolveService],
     pathMatch: 'prefix',
     children: [
-      { path: '',redirectTo:'test1',pathMatch:'full'},
-     // { path: 'test1', component: TestComponent },
-     // { path: 'test2', component: Test2Component },
-    //  { path:'about', component:AboutComponent},
+      { path: '',redirectTo:'configuration',pathMatch:'full'},
       { path:'configuration', component:ConfigurationComponent}
     ]
   }
-   // {path:'',redirectTo:'test1',resolve:[ConfigurationResolveService],pathMatch:'prefix'},
-  // { path: 'test1', component: TestComponent },
-  // { path: 'test2', component: Test2Component }
 ];
 
 @NgModule({

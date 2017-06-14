@@ -10,9 +10,6 @@ import {LoggerRoutingModule} from './app-routing.module';
 import {LogService, LogErrorHandler ,LOG_ERROR_HANDLER_PROVIDER} from './shared/';
 import {ConfigurationResolveService} from './configuration-resolve.service';
 import {ConfigurationService} from './configuration.service';
-//import { TestComponent } from './test/test.component';
-//import { Test2Component } from './test2/test2.component';
-//import { AboutComponent } from './about/about.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 
 @NgModule({
