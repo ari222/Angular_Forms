@@ -11,6 +11,7 @@ import {LogService, LogErrorHandler ,LOG_ERROR_HANDLER_PROVIDER} from './shared/
 import {ConfigurationResolveService} from './configuration-resolve.service';
 import {ConfigurationService} from './configuration.service';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import {ZeusService} from './shared/';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ConfigurationComponent } from './configuration/configuration.component'
     ConfigurationResolveService,
     ConfigurationService,
     LogService,
+    ZeusService,
     Title,
     LOG_ERROR_HANDLER_PROVIDER
   ],

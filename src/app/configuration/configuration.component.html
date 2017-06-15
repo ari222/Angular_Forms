@@ -4,7 +4,7 @@
       <div class="form-container" *ngIf="!submitted">
         <h2>Infrastructure Engineering Request Form </h2>
         <hr>
-        <form [formGroup]="Form" novalidate (ngSubmit)="save(Form.value, Form.valid)">
+        <form [formGroup]="Form" novalidate>
           <div class="row">
             <h3>General Information </h3>
           </div>
@@ -198,7 +198,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
               <div class="col-md-6 button-container">
-                <button type="submit" pButton category="primary" type="text" label="Submit" [disabled]="!Form.valid"></button>
+                <button type="submit" pButton category="primary" type="text" label="Submit" [disabled]="!Form.valid"  (click)="save(Form.value, Form.valid)"></button>
               </div>
             </div>
           </div>
