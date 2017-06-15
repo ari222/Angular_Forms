@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ButtonModule, InputMaskModule, InputTextModule,CalendarModule, RadioButtonModule, InputTextareaModule, DropdownModule, MessagesModule } from 'primeng/primeng';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { ZeusService , Configuration } from "app/shared";
 @Component({
   selector: 'app-form',
   templateUrl: './configuration.component.html',
@@ -19,7 +20,7 @@ export class ConfigurationComponent implements OnInit {
   public Form: FormGroup;
   public submitted: boolean = false;
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder , private zeusService: ZeusService) {
      this.initialBuild();
   }
 
@@ -88,7 +89,20 @@ export class ConfigurationComponent implements OnInit {
   save(inputValue, isValid) {
     if(isValid){
         console.log( "Input values from the form ",inputValue);
-        this.submitted = true;
+        let configuration : Configuration = {
+          configuration_name : (< FormGroup >this.Form.controls['generalInfo']).controls['projectName'].value,
+          configuration_type  : (< FormGroup >this.Form.controls['instances']).controls['applicationType'].value,
+          configuration_content : JSON.stringify(inputValue)
+        };
+this.zeusService.submitConfiguration(configuration).subscribe(
+  response => {
+ // handle response ,if any
+this.submitted = true;
+},
+error =>  {
+  //handle error here
+}
+);
     }
   }
 

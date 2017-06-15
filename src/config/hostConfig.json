@@ -1,4 +1,4 @@
 {
-  "host1" : "http://host1.com/",
+  "host1" : "http://localhost:8080/",
   "host2" : "http://host2.com/"
 }
