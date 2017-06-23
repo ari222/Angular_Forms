@@ -9,13 +9,10 @@ import { ZeusService , Configuration } from "app/shared";
 })
 export class ConfigurationComponent implements OnInit {
 
-  value : Date;
-  radioButtonVal : string = 'Yes';
-
-  accebitlity : any;
-  dbAvailable : any;
   appTypes : any;
-  isVendor : any;
+  stacks : any;
+  environment : any;
+  selectedApplicationType : any ='';
 
   public Form: FormGroup;
   public submitted: boolean = false;
@@ -25,64 +22,38 @@ export class ConfigurationComponent implements OnInit {
   }
 
   initialBuild(){
-    this.accebitlity = [];
-    this.accebitlity.push({label: 'Private', value: 'Private'});
-    this.accebitlity.push({label: 'Public', value: 'Public'});
-    this.accebitlity.push({label: 'both', value: 'Private and Public'});
-    this.dbAvailable = [];
-    this.dbAvailable.push({label: 'Mongo', value: 'Mongo'});
-    this.dbAvailable.push({label: 'MySQL', value: 'MySQL'});
-    this.dbAvailable.push({label: 'Cassandra with Solr', value: 'Cassandra with Solr'});
-    this.dbAvailable.push({label: 'Cassandra without Solr', value: 'Cassandra without Solr'});
-    this.dbAvailable.push({label: 'Other', value: 'Other'});
+    this.stacks = [];
+    this.stacks.push({label: 'Microservices', value: 'microservices'});
+    this.stacks.push({label: 'Other', value: 'other'});
     this.appTypes = [];
-    this.appTypes.push({label: 'ETL', value: 'ETL'});
-    this.appTypes.push({label: 'UI', value: 'UI'});
-    this.appTypes.push({label: 'Service', value: 'Service'});
-    this.appTypes.push({label: 'Other', value: 'Other'});
-    this.isVendor = [];
-    this.isVendor.push({label: 'Yes', value: 'Yes'});
-    this.isVendor.push({label: 'No', value: 'No'});
+    this.appTypes.push({label: 'ETL', value: 'etl'});
+    this.appTypes.push({label: 'Service', value: 'service'});
+    this.appTypes.push({label: 'UI', value: 'ui'});
+    this.environment = [];
+    this.environment.push({label: 'Dev', value: 'dev'});
+    this.environment.push({label: 'Test', value: 'test'});
+    this.environment.push({label: 'QA', value: 'qa'});
+    this.environment.push({label: 'Production', value: 'prod'});
+    this.environment.push({label: 'Psup', value: 'psup'});
   }
 
   ngOnInit() {
       this.Form = this._fb.group({
-        generalInfo: this._fb.group({
-          projectName: [null, [<any>Validators.required]],
-          repoName: ['']
-        }),
-        instances: this._fb.group({
-          applicationType: [''],
-          otherType: [''],
-          desiredApplicationName : ['']
-        }),
-        instanceInfo: this._fb.group({
-          database: [''],
-          otherDb: [''],
-          dbCapacity6moth: [''],
-          dbCapacity1year: ['']
-        }),
-        securityReview: this._fb.group({
-          scheduleAt: ['']
-        }),
-        vendorInfo: this._fb.group({
-          vendorName: [''],
-          isPurchaseFromVendor: [''],
-          accesiblity: [''],
-          vendorContact: [''],
-          vendorAddress: [''],
-          productOwner: [''],
-          description: ['']
-        }),
-        requrestorInfo: this._fb.group({
-          requestorName: [''],
-          deptName: [''],
-          deptManager: [''],
-          description: ['']
-        }),
-        extraInfo: this._fb.group({
-          description: ['']
-        })
+        stack_name: [''],
+        type_name: [''],
+        env: [''],
+        project: ['',[<any>Validators.required]],
+        project_code: [{value: 'project_123', disabled: true}],
+        application_name: ['',[<any>Validators.required]],
+        bitbucket_repository_name: [''],
+        bitbucket_url_name: [''],
+        jira_repository_name: [''],
+        jira_url_name: [''],
+        business_analyst: [''],
+        project_lead: [''],
+        project_manager: [''],
+        project_architect: [''],
+        development_team: ['']
       });
   }
 
@@ -90,19 +61,18 @@ export class ConfigurationComponent implements OnInit {
     if(isValid){
         console.log( "Input values from the form ",inputValue);
         let configuration : Configuration = {
-          configuration_name : (< FormGroup >this.Form.controls['generalInfo']).controls['projectName'].value,
-          configuration_type  : (< FormGroup >this.Form.controls['instances']).controls['applicationType'].value,
+          configuration_name : this.Form.controls['stack_name'].value,
+          configuration_type  : this.Form.controls['type_name'].value,
           configuration_content : JSON.stringify(inputValue)
         };
-this.zeusService.submitConfiguration(configuration).subscribe(
-  response => {
- // handle response ,if any
-this.submitted = true;
-},
-error =>  {
-  //handle error here
-}
-);
+        this.zeusService.submitConfiguration(configuration).subscribe(
+            response => {
+            // handle response ,if any
+            this.submitted = true;
+            },
+            error =>  {
+                //handle error here
+        });
     }
   }
 

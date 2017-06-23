@@ -8,189 +8,347 @@
           <div class="row">
             <h3>General Information </h3>
           </div>
-          <div class="row form-row" formGroupName="generalInfo">
+          <div class="row form-row">
             <div class="col-sm-3">
-              <label for="">Project Name <span>*</span></label>
+              <label for="">Stack</label>
             </div>
             <div class="col-sm-8 col-sm-offset-1">
-              <input type="text" formControlName="projectName" class="form-control" pInputText placeholder="Project name">
+              <p-dropdown [options]="stacks" formControlName="stack_name" placeholder="Select Stack"></p-dropdown>
             </div>
           </div>
-          <div class="row form-row" formGroupName="generalInfo">
-            <div class="col-sm-3">
-              <label for="">Application/Repository Name (As in bitBucket, If Applicable)</label>
-            </div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <input type="text" formControlName="repoName" class="form-control" pInputText placeholder="Application/Repository name">
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <h3>Instances</h3>
-          </div>
-          <div class="row form-row" formGroupName="instances">
+          <div class="row form-row">
             <div class="col-sm-3">
               <label for="">Application Type </label>
             </div>
             <div class="col-sm-8 col-sm-offset-1">
-              <p-dropdown [options]="appTypes" formControlName="applicationType" placeholder="Select Application Type "></p-dropdown>
+              <p-dropdown [options]="appTypes" formControlName="type_name" placeholder="Select Application Type" [(ngModel)]="selectedApplicationType"></p-dropdown>
             </div>
           </div>
-          <div class="row form-row" formGroupName="instances">
-            <div class="col-sm-3"><label for="">If other application type, specify </label></div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <input type="text" class="form-control" formControlName="otherType" pInputText placeholder="Other applications..">
-            </div>
-          </div>
-          <div class="row form-row" formGroupName="instances">
-            <div class="col-sm-3">
-              <label for="">Desired Application Name </label>
-            </div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <input type="text" class="form-control" formControlName="desiredApplicationName" pInputText placeholder="Desired Application Name">
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <h3>Instances Information </h3>
-          </div>
-          <div class="row form-row" formGroupName="instanceInfo">
-            <div class="col-sm-3">
-              <label for="">Database </label>
-            </div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <p-dropdown [options]="dbAvailable" formControlName="database" placeholder="Select a Database"></p-dropdown>
-            </div>
-          </div>
-          <div class="row form-row" formGroupName="instanceInfo">
-            <div class="col-sm-3"><label for="">If other Database, specify </label></div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <input type="text" class="form-control" formControlName="otherDb" pInputText placeholder="Other Database.."></div>
-          </div>
-          <div class="row form-row" formGroupName="instanceInfo">
-            <div class="col-sm-3">
-              <label for="">PROD Database Storage Capacity (0-6 Months) </label>
-            </div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <input type="text" class="form-control" formControlName="dbCapacity6moth" pInputText placeholder="PROD Database Storage Capacity (0-6 Months)">
-            </div>
-          </div>
-          <div class="row form-row" formGroupName="instanceInfo">
-            <div class="col-sm-3"><label for="">PROD Database Storage Capacity (0-1 Year) </label></div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <input type="text" class="form-control" formControlName="dbCapacity1year" pInputText placeholder="PROD Database Storage Capacity (0-1 Year)"></div>
-          </div>
-          <hr>
-          <div class="row">
-            <h3>Security Review (if Outside Vendor)</h3>
-          </div>
-          <div class="row form-row" formGroupName="securityReview">
-            <div class="col-sm-3">
-              <label for="">Scheduled Date </label>
-            </div>
-            <div class="col-sm-5 col-sm-offset-1">
-              <p-calendar formControlName="scheduleAt" [showIcon]="true"></p-calendar>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <h3>Vendor's Information </h3>
-          </div>
-          <div class="row form-row">
-            <div class="col-sm-3">
-              <label for="">Is the application Purchased from a vendor </label>
-            </div>
-         <!--   <div class="col-sm-8 col-sm-offset-1" formGroupName="vendorInfo">
-              <p-dropdown [options]="accebitlity" formControlName="isPurchaseFromVendor" placeholder="Select"></p-dropdown>
-            </div>-->
-            <div class="col-sm-8 col-sm-offset-1" formGroupName="vendorInfo">
-              <p-radioButton name="group2" value="Yes" formControlName="isPurchaseFromVendor" label="Yes"></p-radioButton>
-              <p-radioButton name="group2" value="No" formControlName="isPurchaseFromVendor" label="No"></p-radioButton>
-            </div>
-          </div>
-          <div class="row form-row" formGroupName="vendorInfo">
-            <div class="col-sm-3"><label for="">Accesibility </label></div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <p-dropdown [options]="accebitlity" formControlName="accesiblity" placeholder="Select accebitlity Type "></p-dropdown>
-            </div>
-          </div>
-          <div class="row form-row" formGroupName="vendorInfo">
-            <div class="col-sm-3"><label for="">Vendor's Name </label></div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <input type="text" class="form-control" formControlName="vendorName" pInputText placeholder="Vendor's Name">
-            </div>
-          </div>
-          <div class="row form-row" formGroupName="vendorInfo">
-            <div class="col-sm-3"><label for="">Vendor's Phone Number </label></div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <p-inputMask mask="9999999999" formControlName="vendorContact" placeholder="999999999"></p-inputMask>
-            </div>
-          </div>
-          <div class="row form-row" formGroupName="vendorInfo">
-            <div class="col-sm-12">
-              <div class="col-sm-3"><label for="" >Vendor's Address </label></div>
-              <div class="col-sm-8 col-sm-offset-1">
-                <textarea class="col-xs-12" rows="5" formControlName="vendorAddress" pInputTextArea placeholder="Vendor's Address "></textarea>
+          <div [ngSwitch]="selectedApplicationType">
+            <ng-template [ngSwitchCase]="'etl'">
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Environment</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <p-dropdown [options]="environment" formControlName="env" placeholder="Select Environment"></p-dropdown>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="row form-row" formGroupName="vendorInfo">
-            <div class="col-sm-3"><label for="">WFS Product owner (In-House Contact Person) </label></div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <input type="text" class="form-control" formControlName="productOwner" pInputText placeholder="Contact person name">
-            </div>
-          </div>
-          <div class="row form-row" formGroupName="vendorInfo">
-            <div class="col-sm-12">
-              <div class="col-sm-3"><label for="" >Application Description </label></div>
-              <div class="col-sm-8 col-sm-offset-1">
-                <textarea class="col-xs-12" rows="5" formControlName="description" pInputTextArea placeholder="Description"></textarea>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Name</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project" class="form-control" pInputText placeholder="Enter project name">
+                </div>
               </div>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <h3>Requestor's Info</h3>
-          </div>
-          <br>
-          <div class="row form-row" formGroupName="requrestorInfo">
-            <div class="col-sm-3"><label for="">Requested By </label></div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <input type="text" class="form-control" formControlName="requestorName" pInputText placeholder="Employee's name">
-            </div>
-          </div>
-          <div class="row form-row" formGroupName="requrestorInfo">
-            <div class="col-sm-3"><label for="">Department </label></div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <input type="text" class="form-control" formControlName="deptName" pInputText placeholder="Department name">
-            </div>
-          </div>
-          <div class="row form-row" formGroupName="requrestorInfo">
-            <div class="col-sm-3"><label for="">Department Manager's Name </label></div>
-            <div class="col-sm-8 col-sm-offset-1">
-              <input type="text" class="form-control" formControlName="deptManager" pInputText placeholder="Department Manager's Name"></div>
-          </div>
-          <div class="row form-row" formGroupName="requrestorInfo">
-            <div class="col-sm-12">
-              <div class="col-sm-3"><label for="" >Application Description </label></div>
-              <div class="col-sm-8 col-sm-offset-1">
-                <textarea class="col-xs-12" rows="5" formControlName="description" pInputTextArea placeholder="Description"></textarea>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Code</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project_code" class="form-control" pInputText placeholder="Enter project name">
+                </div>
               </div>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <h3>Extra Information</h3>
-          </div>
-          <br>
-          <div class="row form-row" formGroupName="extraInfo">
-            <div class="col-sm-12">
-              <div class="col-sm-3"><label for="" >Information </label></div>
-              <div class="col-sm-8 col-sm-offset-1">
-                <textarea  class="col-xs-12" rows="5" formControlName="description" pInputTextArea placeholder="Extra Information "></textarea>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Application Name</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="application_name" class="form-control" pInputText placeholder="Enter Application name">
+                </div>
               </div>
-            </div>
-            <br>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Bitbucket Repository Name</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="bitbucket_repository_name" class="form-control" pInputText placeholder="Enter Bitbucket repository name">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Bitbucket Repository Url</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="bitbucket_url_name" class="form-control" pInputText placeholder="Enter Bitbucket repository url">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">JIRA Project Name</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="jira_repository_name" class="form-control" pInputText placeholder="Enter JIRA project name">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">JIRA Project Url</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="jira_url_name" class="form-control" pInputText placeholder="Enter JIRA project url">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Business Analyst</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="email" formControlName="business_analyst" class="form-control" pInputText placeholder="Enter Business Analyst email">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Lead</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project_lead" class="form-control" pInputText placeholder="Enter Project Lead email">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Manager</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project_manager" class="form-control" pInputText placeholder="Enter Project Manager email">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Architect</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project_architect" class="form-control" pInputText placeholder="Enter Project Architect email">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Development Team</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="development_team" class="form-control" pInputText placeholder="Enter development teams email">
+                </div>
+              </div>
+            </ng-template>
+            <ng-template [ngSwitchCase]="'service'">
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Environment</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <p-dropdown [options]="environment" formControlName="env" placeholder="Select Environment"></p-dropdown>
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Name</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project" class="form-control" pInputText placeholder="Enter project name">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Code</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project_code" class="form-control" pInputText placeholder="Enter project name">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Application Name</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="application_name" class="form-control" pInputText placeholder="Enter Application name">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Bitbucket Repository Name</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="bitbucket_repository_name" class="form-control" pInputText placeholder="Enter Bitbucket repository name">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Bitbucket Repository Url</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="bitbucket_url_name" class="form-control" pInputText placeholder="Enter Bitbucket repository url">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">JIRA Project Name</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="jira_repository_name" class="form-control" pInputText placeholder="Enter JIRA project name">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">JIRA Project Url</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="jira_url_name" class="form-control" pInputText placeholder="Enter JIRA project url">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Business Analyst</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="email" formControlName="business_analyst" class="form-control" pInputText placeholder="Enter Business Analyst email">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Lead</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project_lead" class="form-control" pInputText placeholder="Enter Project Lead email">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Manager</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project_manager" class="form-control" pInputText placeholder="Enter Project Manager email">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Architect</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project_architect" class="form-control" pInputText placeholder="Enter Project Architect email">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Development Team</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="development_team" class="form-control" pInputText placeholder="Enter development teams email">
+                </div>
+              </div>
+            </ng-template>
+            <ng-template [ngSwitchCase]="''">
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Environment</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <p-dropdown [options]="environment" formControlName="env" placeholder="Select Environment"></p-dropdown>
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Name</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project" class="form-control" pInputText placeholder="Enter project name">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Code</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project_code" class="form-control" pInputText placeholder="Enter project name">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Application Name</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="application_name" class="form-control" pInputText placeholder="Enter Application name">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Bitbucket Repository Name</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="bitbucket_repository_name" class="form-control" pInputText placeholder="Enter Bitbucket repository name">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Bitbucket Repository Url</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="bitbucket_url_name" class="form-control" pInputText placeholder="Enter Bitbucket repository url">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">JIRA Project Name</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="jira_repository_name" class="form-control" pInputText placeholder="Enter JIRA project name">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">JIRA Project Url</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="jira_url_name" class="form-control" pInputText placeholder="Enter JIRA project url">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Business Analyst</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="email" formControlName="business_analyst" class="form-control" pInputText placeholder="Enter Business Analyst email">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Lead</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project_lead" class="form-control" pInputText placeholder="Enter Project Lead email">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Manager</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project_manager" class="form-control" pInputText placeholder="Enter Project Manager email">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Project Architect</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="project_architect" class="form-control" pInputText placeholder="Enter Project Architect email">
+                </div>
+              </div>
+              <div class="row form-row">
+                <div class="col-sm-3">
+                  <label for="">Development Team</label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-1">
+                  <input type="text" formControlName="development_team" class="form-control" pInputText placeholder="Enter development teams email">
+                </div>
+              </div>
+            </ng-template>
+            <ng-template [ngSwitchCase]="'ui'">
+              <br><br>
+                <p class="form-control alert-danger">
+                  please select the applications type from dropdown
+                </p>
+            </ng-template>
           </div>
           <br>
           <hr>
