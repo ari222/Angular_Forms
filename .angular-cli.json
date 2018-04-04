@@ -1,7 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "upgrade-project"
+    "name": "upgrade-project",
+    "ejected": false
   },
   "apps": [
     {
@@ -11,7 +12,11 @@
         "assets",
         "config",
         "favicon.ico",
-        { "glob": "**/*", "input": "../node_modules/wfs-theme/assets", "output": "./assets/" }
+        {
+  "glob": "**/*",
+  "input": "../node_modules/wfs-theme/assets",
+  "output": "./assets/"
+}
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -63,6 +68,7 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {}
+    "component": {
+    }
   }
 }
